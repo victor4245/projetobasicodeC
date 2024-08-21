@@ -9,7 +9,7 @@ int ocupado[3][10];
 int lugar[3][10];
 int c=0, n, l;
 
-
+ocupado[2][9]=0;
 lugar[0][0]=1;
 lugar[0][1]=2;
 lugar[0][2]=3;
@@ -50,38 +50,40 @@ do{
 }while(c<=2);
     printf("\nescolha uma dessas cadeiras:");
     scanf("%d", &n);
-if(n<=0 || n>=30){
+if(n<=0 || n>=31){
     printf("assento invalido!\n");
     printf("------------------------\n");
     goto erro;
 
-}else{
+}
 //hr dos lugares ficarem ocupados
 
 int m, b=0;
 //m=linha b=coluna
 do{
 for(m=0;m<=9;m++){
+    
     if(n == ocupado[b][m]){
         printf("\nerror esse lugar esta ocupado!\n");
         printf("------------------------\n");
         goto erro;
     
-    }
-    else{
+    }else if(ocupado[2][9]!=0){
+    printf("todos os lugares estão ocupados!");
+    return 0;
+    }else{
         ocupado[b][m] = n;
-        goto done;
+        goto done; 
     }
 }
-b++;
 }while(b<=2);
 
 done:
 printf("\nobrigado pela preferencia!\n");
 printf("------------------------\n");
 
+
 goto inicio;
 
 return 0;
-}
 }
