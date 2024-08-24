@@ -2,11 +2,10 @@
 #include <math.h>
 #include <stdlib.h>
 int main(){
-int aux2=0;
-int ocupado[20];
-ocupado[20]=0;
+int aux2=-1, j;
 inicio:
-if(ocupado[20]!=0){
+int ocupado[20];
+if(ocupado[19]!=0){
     printf("desculpe mas todos os lugares ja foram comprados!");
     return 0;
 }
@@ -40,16 +39,37 @@ do{
     }
 C++;
 }while (C<=1);
+
 printf("\nescolha um lugar:");
 scanf("%d", &aux);
 if(aux<=0 || aux>=21){
     printf("\nlugar invalido!");
     goto inicio;
 }
-printf("\nobrigado pela preferencia tenha um bom dia!");
-printf("\n\n");
-aux2++;
-ocupado[aux2]=aux;
-goto inicio;
 
+for(j=0;j<=19;j++){
+    if(aux == ocupado[j]){
+        printf("\nerror esse lugar esta ocupado!\n");
+        goto inicio;
+    }else{
+        aux2++;
+        ocupado[aux2]=aux;
+        goto erro;
+    }  
+}
+erro:
+char letra;
+
+printf("\ndeseja comprar mais? S/N:");
+scanf("%s", &letra);
+if(letra =='n' || letra == 'N'){
+    printf("\nobrigado pela preferencia tenha um bom dia!\n"); 
+    goto inicio;   
+}else if(letra =='s' || letra == 'S'){
+    printf("\ncerto!\n");
+    goto inicio;
+}else{
+    printf("\ncaractere invalido!\n");
+    goto inicio;
+}
 }
