@@ -2,7 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 int main(){
-int aux2=-1, j;
+int j;
 inicio:
 int ocupado[20];
 if(ocupado[19]!=0){
@@ -32,13 +32,12 @@ lugares[1][8]=19;
 lugares[1][9]=20;
 
 int C=0, L, aux;
-do{
+for(C=0;C<=1;C++){
     for(L=0;L<=9;L++){
 
-    printf("%d      ",lugares[C][L]);
+    printf(" %d ",lugares[C][L]);
     }
-C++;
-}while (C<=1);
+}
 
 printf("\nescolha um lugar:");
 scanf("%d", &aux);
@@ -52,8 +51,7 @@ for(j=0;j<=19;j++){
         printf("\nerror esse lugar esta ocupado!\n");
         goto inicio;
     }else{
-        aux2++;
-        ocupado[aux2]=aux;
+        ocupado[j]=aux;
         goto erro;
     }  
 }
